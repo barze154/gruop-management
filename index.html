@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Group Management</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .group { 
+            background: #f0f0f0; 
+            padding: 15px; 
+            margin-bottom: 15px; 
+            border-radius: 5px; 
+        }
+        .group-title { font-weight: bold; margin-bottom: 10px; }
+        .members { display: flex; gap: 10px; flex-wrap: wrap; }
+        .member {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            min-width: 100px;
+        }
+        .add-area { margin-top: 10px; display: flex; gap: 5px; }
+        input { padding: 5px; }
+        button { padding: 5px 10px; background: #4CAF50; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h1>Group Management System</h1>
+    <div id="groups"></div>
+
+    <script>
+        // Create 28 groups
+        const groupsContainer = document.getElementById('groups');
+        
+        for (let i = 1; i <= 28; i++) {
+            let groupHTML = `
+                <div class="group" id="group-${i}">
+                    <div class="group-title">Group ${i}</div>
+                    <div class="members" id="members-${i}">
+                        <div class="member" onclick="editName(this)">Member 1</div>
+                        <div class="member" onclick="editName(this)">Member 2</div>
+                        <div class="member" onclick="editName(this)">Member 3</div>
+                    </div>
+                    <div class="add-area">
+                        <input type="text" id="new-member-${i}" placeholder="New name">
+                        <button onclick="addMember(${i})">Add</button>
+                    </div>
+                </div>
+            `;
+            groupsContainer.innerHTML += groupHTML;
+        }
+
+        function editName(member) {
+            const newName = prompt("Edit name:", member.textContent);
+            if (newName) member.textContent = newName;
+        }
+
+        function addMember(groupNum) {
+            const input = document.getElementById(`new-member-${groupNum}`);
+            const name = input.value.trim();
+            if (!name) return;
+            
+            const member = document.createElement('div');
+            member.className = 'member';
+            member.textContent = name;
+            member.onclick = function() { editName(this); };
+            
+            document.getElementById(`members-${groupNum}`).appendChild(member);
+            input.value = '';
+        }
+    </script>
+</body>
+</html>
