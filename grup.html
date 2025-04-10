@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .groups-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .group {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+        }
+        
+        .group-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .members {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .member {
+            flex: 1;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        .member-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .member-details {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .add-member {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex: 1;
+        }
+        
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Group Management System</h1>
+        <p>28 Groups with 3 Members Each</p>
+    </div>
+    
+    <div class="groups-container" id="groupsContainer">
+        <!-- Groups will be added here by JavaScript -->
+    </div>
+    
+    <script>
+        // Create 28 groups
+        const groupsContainer = document.getElementById('groupsContainer');
+        
+        for (let i = 1; i <= 28; i++) {
+            const group = document.createElement('div');
+            group.className = 'group';
+            
+            group.innerHTML = `
+                <div class="group-header">Group ${i}</div>
+                <div class="members">
+                    <div class="member">
+                        <div class="member-name">Member 1</div>
+                        <div class="member-details">Details...</div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Member 2</div>
+                        <div class="member-details">Details...</div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">Member 3</div>
+                        <div class="member-details">Details...</div>
+                    </div>
+                </div>
+                <div class="add-member">
+                    <input type="text" placeholder="Add new member">
+                    <button>Add</button>
+                </div>
+            `;
+            
+            groupsContainer.appendChild(group);
+        }
+    </script>
+</body>
+</html>
